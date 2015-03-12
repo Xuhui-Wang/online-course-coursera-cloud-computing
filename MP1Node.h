@@ -31,6 +31,7 @@
 enum MsgTypes{
     JOINREQ,
     JOINREP,
+	HEARTBEAT,
     DUMMYLASTMSGTYPE
 };
 
@@ -73,8 +74,14 @@ public:
 	void nodeLoopOps();
 	int isNullAddress(Address *addr);
 	Address getJoinAddress();
+	Address getAddress(int address , short port);
+	void addOrUpdateEntry(int id, short port, long hb);
+	void addMemberListTable(int id, short port, long heartbeat);
+	void addMemberListTable(MemberListEntry newMember);
 	void initMemberListTable(Member *memberNode);
 	void printAddress(Address *addr);
+	void printMemberListTable();
+	void writeMemberListTable(char *ptr);
 	virtual ~MP1Node();
 };
 
